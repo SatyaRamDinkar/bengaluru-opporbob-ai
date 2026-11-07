@@ -1,0 +1,44 @@
+[
+  {
+    "id": "res-201",
+    "type": "Surplus Food Redistribution",
+    "title_en": "Fresh Bakeries & Event Catering Surplus Redistribution",
+    "title_kn": "ತಾಜಾ ಬೇಕರಿ ಮತ್ತು ಕಾರ್ಯಕ್ರಮದ ಉಳಿದ ಆಹಾರ ವಿತರಣೆ",
+    "title_hi": "ताज़ा बेकरी और इवेंट कैटरिंग का बचा हुआ भोजन वितरण",
+    "donor_name": "Bangalore Bakeries Guild (Indiranagar & Koramangala)",
+    "location": "Indiranagar 100ft Road, Bengaluru",
+    "quantity": "60-90 hygienically packed warm meal boxes daily",
+    "target_recipients": "Night shelters, construction worker camps, auto drivers stands",
+    "status": "Available Today (Pickup before 9:30 PM)",
+    "coordinator_phone": "+91 98450 XXXXX",
+    "verification_status": "FSSAI Verified Safe Donor"
+  },
+  {
+    "id": "res-202",
+    "type": "Neighborhood Skill & Tool Exchange",
+    "title_en": "Open Electronics Workbench & Oscilloscope Access",
+    "title_kn": "ಮುಕ್ತ ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಮತ್ತು ಆಸಿಲ್ಲೋಸ್ಕೋಪ್ ಉಪಕರಣಗಳ ಬಳಕೆ",
+    "title_hi": "ओपन इलेक्ट्रॉनिक्स और ऑसिलोस्कोप टूलकिट साझाकरण",
+    "donor_name": "Koramangala Community Makerspace",
+    "location": "Koramangala 4th Block, Bengaluru",
+    "quantity": "4 Digital Oscilloscopes, Soldering Stations, Arduino & ESP32 kits",
+    "target_recipients": "Diploma students, grassroots innovators & repair technicians",
+    "status": "Every Saturday 10:00 AM - 4:00 PM",
+    "coordinator_phone": "+91 94480 XXXXX",
+    "verification_status": "Verified Community Host"
+  },
+  {
+    "id": "res-203",
+    "type": "Digital Support for Micro-Enterprises",
+    "title_en": "Student Tech Mentors for Neighborhood Kirana Digital Payments & ONDC",
+    "title_kn": "ಕಿರಣ ಅಂಗಡಿಗಳಿಗೆ ಯುಪಿಐ, ಜಿಎಸ್‌ಟಿ ಮತ್ತು ಒಎನ್‌ಡಿಸಿ ಡಿಜಿಟಲ್ ತರಬೇತಿ",
+    "title_hi": "किराना दुकानों के लिए डिजिटल भुगतान, जीएसटी और ओएनडीसी सहायता",
+    "donor_name": "Bengaluru Youth Tech Volunteers (RVCE & PES Students)",
+    "location": "Jayanagar 4th T Block & Basavanagudi",
+    "quantity": "30 trained student volunteers available every weekend",
+    "target_recipients": "Small tea stalls, vegetable vendors, neighborhood grocers",
+    "status": "Active Campaign",
+    "coordinator_phone": "+91 97400 XXXXX",
+    "verification_status": "Verified Academic Union"
+  }
+]

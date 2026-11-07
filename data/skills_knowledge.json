@@ -1,0 +1,64 @@
+{
+  "skills_matrix": {
+    "Basic Electrical Knowledge": {
+      "level": "Foundational",
+      "learning_roadmap": [
+        {"step": 1, "topic": "AC/DC Fundamentals & Circuit Laws", "duration": "4 days", "provider": "Karnataka Skill Mission (Free Portal)"},
+        {"step": 2, "topic": "Safe Multi-Meter Probing & Continuity Testing", "duration": "3 days", "provider": "Peenya ITI Hands-on Lab"},
+        {"step": 3, "topic": "Safety PPE & Earthing Standards in Bengaluru", "duration": "2 days", "provider": "Bescom Certified Practical Center"}
+      ]
+    },
+    "Battery Cell Testing": {
+      "level": "Specialized CleanTech",
+      "learning_roadmap": [
+        {"step": 1, "topic": "Li-Ion Chemistry, C-Rates and Thermal Runaway Protocols", "duration": "5 days", "provider": "IISc / NPTEL Open Electric Mobility"},
+        {"step": 2, "topic": "BMS (Battery Management System) Diagnostics & Fault Codes", "duration": "1 week", "provider": "Bengaluru EV Skill Hub (Peenya)"},
+        {"step": 3, "topic": "Pack Disassembly & Cell Internal Resistance Balancing", "duration": "3 days", "provider": "Nandi Mobility Workshop Lab"}
+      ]
+    },
+    "CNC Basics": {
+      "level": "Precision Manufacturing",
+      "learning_roadmap": [
+        {"step": 1, "topic": "Cartesian Coordinate Systems (X, Y, Z axes)", "duration": "3 days", "provider": "GTTC Rajajinagar"},
+        {"step": 2, "topic": "G-Code & M-Code Programming Basics", "duration": "1 week", "provider": "Peenya Machinists Guild"},
+        {"step": 3, "topic": "Feed & Speed Calculations for Aerospace Aluminum", "duration": "4 days", "provider": "Bommasandra Vocational Center"}
+      ]
+    },
+    "Smartphone Photography": {
+      "level": "Creative Commercial",
+      "learning_roadmap": [
+        {"step": 1, "topic": "Natural Light Diffusers & Angles for Silk Fabrics", "duration": "2 days", "provider": "Chickpet Traders Union Mentorship"},
+        {"step": 2, "topic": "Rapid Mobile Background Neutralization", "duration": "3 days", "provider": "Bengaluru Digital Commerce Cell"},
+        {"step": 3, "topic": "Publishing to WhatsApp Business & ONDC Seller Node", "duration": "1 day", "provider": "MSME Samadhaan Center, Gandhi Nagar"}
+      ]
+    },
+    "First Aid Basics": {
+      "level": "Care & Emergency",
+      "learning_roadmap": [
+        {"step": 1, "topic": "CPR, Choking & Emergency Trauma Response", "duration": "2 days", "provider": "St. John's Medical College Volunteer Wing"},
+        {"step": 2, "topic": "Geriatric Mobility & Fall Prevention Best Practices", "duration": "3 days", "provider": "Malleshwaram Community Care Center"},
+        {"step": 3, "topic": "Vitals Charting (BP, Pulse Oximeter, Glucometer)", "duration": "2 days", "provider": "Karnataka Red Cross Society"}
+      ]
+    }
+  },
+  "local_skilling_centers": [
+    {
+      "name": "Peenya Government ITI & Skill Hub",
+      "location": "Near Peenya Metro Station, Bengaluru",
+      "specialization": "EV Powertrain, Electrical & Mechatronics",
+      "tuition": "Subsidized / 100% Free for eligible youth"
+    },
+    {
+      "name": "GTTC (Government Tool Room & Training Centre)",
+      "location": "Rajajinagar Industrial Estate, Bengaluru",
+      "specialization": "Precision CNC Machining & Tool Engineering",
+      "tuition": "Government Sponsored Stipend Programs"
+    },
+    {
+      "name": "Bengaluru Urban Youth Digital Hub",
+      "location": "Koramangala BDA Complex, Bengaluru",
+      "specialization": "Digital Cataloging, Micro-accounting & ONDC Onboarding",
+      "tuition": "100% Free Weekend Community Workshops"
+    }
+  ]
+}
