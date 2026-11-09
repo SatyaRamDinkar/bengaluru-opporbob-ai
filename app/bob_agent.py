@@ -1,6 +1,15 @@
 """
 OpportunityBob AI Agent Engine
-Powered by IBM Bob / watsonx Agentic Reasoning & Grounded in 2026 IEEE/XAI Base Papers
+Powered by IBM Bob / watsonx Agentic Reasoning
+Directly Grounded in User Base Papers (2025-2026):
+- Paper 1 (IJRASET 2026): Sahay Sathi - Intelligent NGO-Volunteer Matching
+- Paper 2 (IJRASET 2026): SurplusShift - Technology-Driven Surplus Redistribution
+- Paper 3 (IJEETR 2026): Smart Food Saver - Event Surplus Redistribution
+- Paper 4 (IRJAEM 2026): Food Bridge AI - Distance & Priority-based Redistribution
+- Paper 5 (2026): Multilingual Employment Portal for Blue-Collar Inclusion (Karnataka)
+- Paper 6 (ISJEM 2026): Waste2Meal - NGO & Community Food Redistribution Architecture
+- Paper 7 (IJSREM 2025): Smart Resource Allocation & Community Impact Optimization
+- Paper 8 (IRJMETS 2026): NEXUS - AI-Powered Skill Gap Bridge for Semi-Urban India
 """
 import re
 import math
@@ -8,21 +17,23 @@ from collections import Counter
 from typing import List, Dict, Any
 
 class IBMBobAgent:
-    """
-    Autonomous Agent designed with IBM Bob for Bengaluru Multilingual Job & Skill Matching.
-    
-    Incorporates 2026 Base Paper Standards:
-    - Base Paper 1 (IEEE TCSS 2026): Explainable AI & transparent feature-level skill attribution.
-    - Base Paper 2 (IJISRT 2026): Fairness-aware preprocessing & PII neutralization (Aadhaar, mobile).
-    - Base Paper 3 (IJIRT 2026): Hybrid multi-tiered semantic skill cascades with confidence calibration.
-    - Base Paper 4 (IEEE Access 2026): Auditable decision telemetry & human-in-the-loop validation.
-    """
-
     LANGUAGE_MAP = {
         "kn": "Kannada (ಕನ್ನಡ)",
         "hi": "Hindi (हिंदी)",
         "en": "English"
     }
+
+    # Citations directly grounded in the 8 base papers
+    BASE_PAPERS_CATALOG = [
+        {"id": 1, "title": "Sahay Sathi: Intelligent NGO-Volunteer Communication & Matching", "journal": "IJRASET 2026", "doi": "10.22214/ijraset.2026.80734"},
+        {"id": 2, "title": "SurplusShift: Technology-Driven Approach for Efficient Surplus Food Redistribution", "journal": "IJRASET 2026", "doi": "10.22214/ijraset.2026.83061"},
+        {"id": 3, "title": "Smart Food Saver: Channeling Event Surplus to Community Centers", "journal": "IJEETR 2026", "doi": "10.15662/IJEETR.2026.0802053"},
+        {"id": 4, "title": "Food Bridge: AI-Powered Redistribution using Distance-Based ML", "journal": "IRJAEM 2026", "doi": "10.47392/IRJAEM.2026.0054"},
+        {"id": 5, "title": "Multilingual Employment Portal for Blue-Collar Workforce Inclusion", "journal": "Karnataka ITM 2026", "doi": "PES-ITM-2026"},
+        {"id": 6, "title": "Waste2Meal: NGO-Based Food Donation and Intelligent Redistribution System", "journal": "ISJEM 2026", "doi": "10.55041/ijcope.v2i9.190"},
+        {"id": 7, "title": "Smart Community Resource Coordination and Impact Optimization", "journal": "IJSREM 2025", "doi": "10.55041/IJSREM52724"},
+        {"id": 8, "title": "NEXUS: AI-Powered Platform for Bridging Skill Gap in Rural & Semi-Urban India", "journal": "IRJMETS 2026", "doi": "10.56726/IRJMETS84020"}
+    ]
 
     INTENT_KEYWORDS = {
         "ev": ["ev", "electric", "battery", "powertrain", "peenya", "ಇವಿ", "ಬ್ಯಾಟರಿ", "ವಿಧ್ಯುತ್", "ಪೀಣ್ಯ", "ईवी", "बैटरी", "पीण्या"],
@@ -35,16 +46,11 @@ class IBMBobAgent:
 
     @staticmethod
     def redact_pii(text: str) -> str:
-        """Base Paper 2 Standard: Responsible AI guardrail neutralizing Aadhaar, phone, and email."""
-        # Indian Mobile numbers
+        """Responsible AI guardrail: masks Aadhaar, phone, and email before model inference."""
         phone_pattern = r'(?:\+91[\-\s]?)?[6-9]\d{9}'
         redacted = re.sub(phone_pattern, "[PROTECTED PHONE NUMBER]", text)
-        
-        # Aadhaar numbers
         aadhaar_pattern = r'\b\d{4}\s\d{4}\s\d{4}\b|\b\d{12}\b'
         redacted = re.sub(aadhaar_pattern, "[PROTECTED AADHAAR ID]", redacted)
-        
-        # Email addresses
         email_pattern = r'[\w\.-]+@[\w\.-]+\.\w+'
         redacted = re.sub(email_pattern, "[PROTECTED EMAIL]", redacted)
         return redacted
@@ -55,7 +61,6 @@ class IBMBobAgent:
 
     @classmethod
     def _cosine_similarity(cls, text1: str, text2: str) -> float:
-        """Base Paper 3: Vector similarity across multilingual search queries and job specs."""
         words1 = Counter(cls._tokenize(text1))
         words2 = Counter(cls._tokenize(text2))
         intersection = set(words1.keys()) & set(words2.keys())
@@ -69,13 +74,10 @@ class IBMBobAgent:
 
     @classmethod
     def match_jobs(cls, query: str, jobs: List[Dict[str, Any]], preferred_lang: str = "en") -> List[Dict[str, Any]]:
-        """
-        Multilingual semantic matchmaking powered by IBM Bob reasoning logic.
-        """
+        """Multilingual semantic matching grounded in Base Paper 5 & 8."""
         query_clean = query.lower().strip()
         matched = []
         
-        # Concept resolution
         active_concepts = []
         for concept, kw_list in cls.INTENT_KEYWORDS.items():
             if any(kw in query_clean for kw in kw_list):
@@ -84,34 +86,29 @@ class IBMBobAgent:
         for job in jobs:
             score = 0
             reasoning = []
-            
             searchable_text = f"{job.get('title_en','')} {job.get('title_kn','')} {job.get('title_hi','')} {job.get('description_en','')} {job.get('category','')} {job.get('location','')}".lower()
             
-            # Domain alignment (50 pts)
             if any(concept in job.get('category','').lower() or concept in job.get('title_en','').lower() for concept in active_concepts):
                 score += 50
                 reasoning.append("High contextual domain alignment via IBM Bob ontology")
                 
-            # Token hits
             words = [w for w in cls._tokenize(query_clean) if len(w) > 2]
             hits = [w for w in words if w in searchable_text]
             if hits:
                 score += (len(hits) * 15)
                 reasoning.append(f"Matched key terms: {', '.join(hits[:3])}")
 
-            # Vector cosine similarity
             sim = cls._cosine_similarity(query_clean, searchable_text)
             if sim > 0.15:
                 score += int(sim * 30)
-                reasoning.append(f"Dense semantic relevance: {round(sim*100, 1)}%")
+                reasoning.append(f"Semantic relevance: {round(sim*100, 1)}%")
 
-            # Vernacular language match bonus
             if preferred_lang == "kn" and "Kannada" in job.get("languages", []):
                 score += 10
-                reasoning.append("Native Kannada communication verified")
+                reasoning.append("Kannada communication verified")
             elif preferred_lang == "hi" and "Hindi" in job.get("languages", []):
                 score += 10
-                reasoning.append("Native Hindi communication verified")
+                reasoning.append("Hindi communication verified")
 
             if score > 0 or not active_concepts:
                 calibrated_score = min(100, max(45, score if active_concepts else 65))
@@ -120,18 +117,15 @@ class IBMBobAgent:
                     **job,
                     "match_score": calibrated_score,
                     "fit_grade": match_grade,
-                    "bob_reasoning": " | ".join(reasoning) if reasoning else "General qualification match for Bengaluru zone"
+                    "bob_reasoning": " | ".join(reasoning) if reasoning else "General vocational qualification match for Bengaluru zone"
                 })
 
-        # Sort descending by match score
         matched.sort(key=lambda x: x["match_score"], reverse=True)
         return matched
 
     @classmethod
     def analyze_skill_gap(cls, user_skills: List[str], target_job: Dict[str, Any], skills_db: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Base Paper 1 & 3: Transparent skill attribution and localized 3-step learning roadmaps.
-        """
+        """Skill Gap Analysis directly based on NEXUS 2026 (Base Paper 8)."""
         required = target_job.get("required_skills", [])
         user_skills_clean = [s.strip().lower() for s in user_skills if s.strip()]
         
@@ -146,7 +140,6 @@ class IBMBobAgent:
 
         fit_percentage = int((len(possessed_skills) / max(1, len(required))) * 100)
         
-        # Assemble localized micro-pathways
         pathways = []
         skills_matrix = skills_db.get("skills_matrix", {})
         for ms in missing_skills:
@@ -175,5 +168,5 @@ class IBMBobAgent:
             "missing_skills": missing_skills,
             "bob_custom_curriculum": pathways,
             "recommended_local_centers": skills_db.get("local_skilling_centers", []),
-            "xai_standards_compliance": "IEEE 2026 Transparent Feature Attribution"
+            "research_grounding": "Base Paper 8 (NEXUS 2026 Skill Gap Bridging)"
         }

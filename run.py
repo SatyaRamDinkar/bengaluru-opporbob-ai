@@ -1,8 +1,23 @@
 """
 OpportunityBob Launcher
+Unified single command launcher for Streamlit
 """
-import uvicorn
+import os
+import subprocess
+import sys
+
+def main():
+    print("Launching OpportunityBob on http://localhost:8501 ...")
+    cmd = [
+        sys.executable,
+        "-m",
+        "streamlit",
+        "run",
+        "streamlit_app.py",
+        "--server.port=8501",
+        "--server.headless=true"
+    ]
+    subprocess.run(cmd)
 
 if __name__ == "__main__":
-    print("Starting OpportunityBob on http://localhost:8000 ...")
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=False)
+    main()
