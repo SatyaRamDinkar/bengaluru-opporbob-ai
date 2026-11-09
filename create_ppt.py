@@ -1,6 +1,6 @@
 """
 OpportunityBob - Client-Grade & Hackathon Submission Presentation Generator
-Designed with Perfect Vertical Spacing, Line Spacing, and Card Geometry
+Flawless Card Layout: Clean Single-Container Text Flow with No Overlapping Elements
 """
 from pptx import Presentation
 from pptx.util import Inches, Pt
@@ -43,9 +43,8 @@ def add_rect(slide, l, t, w, h, fill_color, border_color=None, border_w=1):
     return shape
 
 def add_header(slide, tag_text, title_text, tag_color=GOLD):
-    # Left accent line
     add_rect(slide, 0, 0, 0.35, 7.5, IBM_BLUE)
-    # Header tag
+    
     tx_tag = slide.shapes.add_textbox(Inches(0.75), Inches(0.38), Inches(10.0), Inches(0.32))
     p_tag = tx_tag.text_frame.paragraphs[0]
     run_tag = p_tag.add_run()
@@ -55,7 +54,6 @@ def add_header(slide, tag_text, title_text, tag_color=GOLD):
     run_tag.font.color.rgb = tag_color
     run_tag.font.name = "Segoe UI"
     
-    # Title
     tx_title = slide.shapes.add_textbox(Inches(0.75), Inches(0.70), Inches(12.0), Inches(0.65))
     p_title = tx_title.text_frame.paragraphs[0]
     run_title = p_title.add_run()
@@ -65,7 +63,6 @@ def add_header(slide, tag_text, title_text, tag_color=GOLD):
     run_title.font.color.rgb = WHITE
     run_title.font.name = "Segoe UI"
     
-    # Separator
     add_rect(slide, 0.75, 1.45, 12.0, 0.02, CARD_BORDER)
 
 def add_footer(slide):
@@ -175,7 +172,7 @@ add_footer(s1)
 
 
 # ==============================================================================
-# SLIDE 2: THE PROBLEM STATEMENT & URBAN CHALLENGE (FULL HEIGHT, SPACED OUT)
+# SLIDE 2: THE PROBLEM STATEMENT (CLEAN INTEGRATED FLOW)
 # ==============================================================================
 s2 = prs.slides.add_slide(BLANK)
 add_rect(s2, 0, 0, 13.333, 7.5, IBM_DARK)
@@ -183,161 +180,130 @@ add_header(s2, "Challenge Context & Demographics", "The Problem: Who Experiences
 
 problem_cards = [
     ("1. The Vernacular Language Divide",
-     "Over 60% of Bengaluru's 1.4+ crore blue-collar and vocational workforce communicates natively in Kannada or Hindi.\n\n"
-     "Traditional recruitment platforms and digital portals are 100% English-monolingual, actively excluding vocational job-seekers from rapid employment.\n\n"
-     "This digital language divide leads to delayed hiring, wage suppression, and over-reliance on exploitative intermediaries across major industrial areas.",
-     GOLD,
-     "IMPACT: >60% Candidates Excluded"),
+     "Over 60% of Bengaluru's 1.4+ crore blue-collar and vocational workforce communicates natively in Kannada or Hindi.",
+     "Traditional hiring platforms and digital portals are 100% English-monolingual, actively excluding vocational job-seekers from modern industrial careers.",
+     "This digital divide leads to delayed hiring, wage suppression, and over-reliance on informal, unvetted middlemen across industrial belts.",
+     GOLD),
     ("2. Vocational Skill Gap Opacity",
-     "Candidates applying to industrial clusters (Peenya EV manufacturing, Electronic City Solar PV, Bommasandra CNC machining) face flat rejection.\n\n"
-     "Applicants receive zero feedback on missing competencies, prerequisite trade skills, or practical certifications required by hiring factories.\n\n"
-     "No unified system maps candidate qualifications to local government ITI vocational centers or micro-skilling learning paths.",
-     CYAN,
-     "IMPACT: High Rejection & Idle Talent"),
+     "Candidates applying to industrial clusters (Peenya EV manufacturing, Electronic City Solar, Bommasandra CNC machining) face flat rejection.",
+     "Applicants receive zero feedback on missing competencies, prerequisite trade certifications, or practical factory-floor requirements.",
+     "No unified platform connects applicant skill profiles with local government ITIs (Peenya, Hosur Rd, Dairy Circle) for subsidized upskilling.",
+     CYAN),
     ("3. Fragmented Community Redistribution",
-     "Bengaluru generates thousands of excess catered event meals, bulk perishable provisions, and industrial tools daily.\n\n"
-     "Local NGOs, orphanages, and care shelters suffer persistent resource deficits due to ad-hoc, uncoordinated phone communications.\n\n"
-     "Donations lack automated routing, privacy protection for donors/recipients, and a verified human-in-the-loop coordination layer.",
-     GREEN,
-     "IMPACT: Severe Waste & Resource Mismatch")
+     "Bengaluru generates thousands of excess catered event meals, bulk perishable provisions, and industrial tools every week.",
+     "Local NGOs, orphanages, and shelter homes face constant food insecurity due to uncoordinated, ad-hoc phone calls.",
+     "Donations lack automated routing, privacy protection for donors and recipients, and a verified human-in-the-loop coordination layer.",
+     GREEN)
 ]
 
-card_top = 1.70
-card_height = 5.05
-card_w = 3.75
+card_top = Inches(1.70)
+card_h   = Inches(5.05)
+card_w   = Inches(3.75)
 
-for i, (title, desc, accent_col, tag_bottom) in enumerate(problem_cards):
-    x = 0.8 + (i * 4.0)
-    add_rect(s2, x, card_top, card_w, card_height, CARD_BG, border_color=CARD_BORDER)
-    add_rect(s2, x, card_top, card_w, 0.10, accent_col)
+for i, (title, p1, p2, p3, accent_col) in enumerate(problem_cards):
+    x = Inches(0.8 + (i * 4.0))
+    add_rect(s2, 0.8 + (i * 4.0), 1.70, 3.75, 5.05, CARD_BG, border_color=CARD_BORDER)
+    add_rect(s2, 0.8 + (i * 4.0), 1.70, 3.75, 0.10, accent_col)
     
-    # Title box
-    tx_t = s2.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 0.22), Inches(card_w - 0.5), Inches(0.70))
-    tx_t.text_frame.word_wrap = True
-    p_t = tx_t.text_frame.paragraphs[0]
-    r_t = p_t.add_run()
+    # Unified text box inside card
+    tx_box = s2.shapes.add_textbox(x + Inches(0.25), card_top + Inches(0.20), card_w - Inches(0.5), card_h - Inches(0.40))
+    tx_box.text_frame.word_wrap = True
+    tf = tx_box.text_frame
+    
+    # Title
+    p_title = tf.paragraphs[0]
+    p_title.space_after = Pt(16)
+    r_t = p_title.add_run()
     r_t.text = title
     r_t.font.size = Pt(16.5)
     r_t.font.bold = True
     r_t.font.color.rgb = WHITE
     r_t.font.name = "Segoe UI"
     
-    # Body text with line spacing
-    tx_d = s2.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 0.95), Inches(card_w - 0.5), Inches(3.30))
-    tx_d.text_frame.word_wrap = True
-    tf_d = tx_d.text_frame
-    paragraphs = desc.split("\n\n")
-    for p_idx, text_p in enumerate(paragraphs):
-        p_obj = tf_d.paragraphs[0] if p_idx == 0 else tf_d.add_paragraph()
-        p_obj.line_spacing = 1.35
-        p_obj.space_after = Pt(10)
-        r_obj = p_obj.add_run()
-        r_obj.text = text_p
-        r_obj.font.size = Pt(12)
-        r_obj.font.color.rgb = LIGHT_GREY
-        r_obj.font.name = "Segoe UI"
-        
-    # Bottom impact pill
-    add_rect(s2, x + 0.25, card_top + 4.35, card_w - 0.5, 0.45, RGBColor(0x15, 0x18, 0x1C), border_color=accent_col, border_w=1)
-    tx_pill = s2.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 4.40), Inches(card_w - 0.5), Inches(0.35))
-    p_pill = tx_pill.text_frame.paragraphs[0]
-    p_pill.alignment = PP_ALIGN.CENTER
-    r_pill = p_pill.add_run()
-    r_pill.text = tag_bottom
-    r_pill.font.size = Pt(10.5)
-    r_pill.font.bold = True
-    r_pill.font.color.rgb = accent_col
-    r_pill.font.name = "Segoe UI"
+    # 3 spaced paragraphs
+    for p_text in [p1, p2, p3]:
+        p_item = tf.add_paragraph()
+        p_item.line_spacing = 1.30
+        p_item.space_after = Pt(14)
+        r_item = p_item.add_run()
+        r_item.text = p_text
+        r_item.font.size = Pt(11.5)
+        r_item.font.color.rgb = LIGHT_GREY
+        r_item.font.name = "Segoe UI"
 
 add_footer(s2)
 
 
 # ==============================================================================
-# SLIDE 3: OUR SOLUTION & ARCHITECTURE (FULL HEIGHT, SPACED OUT)
+# SLIDE 3: OUR SOLUTION & ARCHITECTURE (CLEAN INTEGRATED FLOW)
 # ==============================================================================
 s3 = prs.slides.add_slide(BLANK)
 add_rect(s3, 0, 0, 13.333, 7.5, IBM_DARK)
 add_header(s3, "Product Innovation", "The Prototype: A Working Solution Built with IBM Bob")
 
 pillars = [
-    ("💼 Multilingual Semantic Job Matching",
+    ("💼 Multilingual Semantic Matching",
      [
-         ("Native Multilingual Ingestion", "Processes conversational queries in English, Kannada (ಕನ್ನಡ), and Hindi (हिंदी) simultaneously."),
+         ("Native Multilingual Ingestion", "Processes queries in English, Kannada (ಕನ್ನಡ), and Hindi (हिंदी) simultaneously."),
          ("Dense Cosine Match Engine", "Matches vocational candidate inputs against verified Bengaluru job profiles with dense semantic scoring."),
-         ("Transparent XAI Reasoning", "IBM Bob produces calibrated match scores (45–100%) and explains *why* the candidate fits the role."),
+         ("Transparent XAI Reasoning", "Produces calibrated match scores (45–100%) and explains *why* the candidate fits the role."),
          ("Instant Industrial Routing", "Focuses on Peenya EV clusters, Electronic City solar fields, and Bommasandra precision CNC shops.")
      ],
-     IBM_BLUE,
-     "Base Paper 5 (PES ITM 2026)"),
-    ("📈 NEXUS 3-Step ITI Learning Roadmaps",
+     IBM_BLUE),
+    ("📈 NEXUS 3-Step ITI Roadmaps",
      [
          ("Granular Skill Deconstruction", "Deconstructs required job competencies to identify exact missing trade capabilities for each applicant."),
          ("Step-by-Step Micro-Roadmaps", "Synthesizes modular 3-step pathways: Foundational Theory -> Hands-on ITI Lab -> Apprenticeship prep."),
          ("Karnataka ITI Portal Linkage", "Directly maps learners to local government ITI centers (Peenya, Hosur Rd, Dairy Circle) for free skilling."),
          ("Measurable Career Readiness", "Transforms candidates from initial rejection into certified, industry-ready vocational apprentices.")
      ],
-     GOLD,
-     "Base Paper 8 (NEXUS 2026)"),
-    ("🤝 Verified Community Food & Resource Exchange",
+     GOLD),
+    ("🤝 Verified Community Food Exchange",
      [
          ("Rapid Surplus Food Intake", "Ingests surplus event meals, commercial food batches, and vocational tools with zero manual overhead."),
          ("Automated PII Redaction", "Responsible AI guardrail masks Indian mobile numbers, Aadhaar IDs, and emails before broadcast."),
          ("Human-in-the-Loop Gate", "Community coordinators verify listings before publication, ensuring food safety and authentic dispatch."),
          ("Targeted Shelter Allocation", "Directly connects surplus provisions to verified care centers, orphanages, and vocational apprentice hostels.")
      ],
-     GREEN,
-     "Base Papers 1, 2, 3, 4, 6, 7")
+     GREEN)
 ]
 
-for i, (title, points, col, badge_text) in enumerate(pillars):
-    x = 0.8 + (i * 4.0)
-    add_rect(s3, x, card_top, card_w, card_height, CARD_BG, border_color=CARD_BORDER)
-    add_rect(s3, x, card_top, card_w, 0.10, col)
+for i, (title, points, col) in enumerate(pillars):
+    x = Inches(0.8 + (i * 4.0))
+    add_rect(s3, 0.8 + (i * 4.0), 1.70, 3.75, 5.05, CARD_BG, border_color=CARD_BORDER)
+    add_rect(s3, 0.8 + (i * 4.0), 1.70, 3.75, 0.10, col)
+    
+    tx_box = s3.shapes.add_textbox(x + Inches(0.25), card_top + Inches(0.20), card_w - Inches(0.5), card_h - Inches(0.40))
+    tx_box.text_frame.word_wrap = True
+    tf = tx_box.text_frame
     
     # Title
-    tx_t = s3.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 0.22), Inches(card_w - 0.5), Inches(0.70))
-    tx_t.text_frame.word_wrap = True
-    p_t = tx_t.text_frame.paragraphs[0]
-    r_t = p_t.add_run()
+    p_title = tf.paragraphs[0]
+    p_title.space_after = Pt(14)
+    r_t = p_title.add_run()
     r_t.text = title
-    r_t.font.size = Pt(15.5)
+    r_t.font.size = Pt(16)
     r_t.font.bold = True
     r_t.font.color.rgb = col
     r_t.font.name = "Segoe UI"
     
-    # Points
-    tx_body = s3.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 0.95), Inches(card_w - 0.5), Inches(3.30))
-    tx_body.text_frame.word_wrap = True
-    tf_b = tx_body.text_frame
-    for p_idx, (p_head, p_desc) in enumerate(points):
-        p_obj = tf_b.paragraphs[0] if p_idx == 0 else tf_b.add_paragraph()
-        p_obj.line_spacing = 1.25
-        p_obj.space_after = Pt(8)
+    for p_head, p_desc in points:
+        p_item = tf.add_paragraph()
+        p_item.line_spacing = 1.25
+        p_item.space_after = Pt(11)
         
-        r_head = p_obj.add_run()
+        r_head = p_item.add_run()
         r_head.text = f"• {p_head}: "
         r_head.font.size = Pt(11)
         r_head.font.bold = True
         r_head.font.color.rgb = WHITE
         r_head.font.name = "Segoe UI"
         
-        r_desc = p_obj.add_run()
+        r_desc = p_item.add_run()
         r_desc.text = p_desc
         r_desc.font.size = Pt(11)
         r_desc.font.color.rgb = LIGHT_GREY
         r_desc.font.name = "Segoe UI"
-        
-    # Research badge pill
-    add_rect(s3, x + 0.25, card_top + 4.35, card_w - 0.5, 0.45, RGBColor(0x15, 0x18, 0x1C), border_color=col, border_w=1)
-    tx_pill = s3.shapes.add_textbox(Inches(x + 0.25), Inches(card_top + 4.40), Inches(card_w - 0.5), Inches(0.35))
-    p_pill = tx_pill.text_frame.paragraphs[0]
-    p_pill.alignment = PP_ALIGN.CENTER
-    r_pill = p_pill.add_run()
-    r_pill.text = badge_text
-    r_pill.font.size = Pt(10)
-    r_pill.font.bold = True
-    r_pill.font.color.rgb = col
-    r_pill.font.name = "Segoe UI"
 
 add_footer(s3)
 
@@ -369,7 +335,6 @@ for i, (phase_title, phase_desc, tag_pill) in enumerate(story_steps):
     add_rect(s4, 0.8, y, 11.8, 1.12, CARD_BG, border_color=CARD_BORDER)
     add_rect(s4, 0.8, y, 0.15, 1.12, IBM_BLUE)
     
-    # Title
     tx_t = s4.shapes.add_textbox(Inches(1.15), Inches(y + 0.14), Inches(4.2), Inches(0.38))
     p_t = tx_t.text_frame.paragraphs[0]
     r_t = p_t.add_run()
@@ -379,7 +344,6 @@ for i, (phase_title, phase_desc, tag_pill) in enumerate(story_steps):
     r_t.font.color.rgb = GOLD
     r_t.font.name = "Segoe UI"
     
-    # Desc
     tx_d = s4.shapes.add_textbox(Inches(5.4), Inches(y + 0.10), Inches(5.0), Inches(0.90))
     tx_d.text_frame.word_wrap = True
     p_d = tx_d.text_frame.paragraphs[0]
@@ -390,7 +354,6 @@ for i, (phase_title, phase_desc, tag_pill) in enumerate(story_steps):
     r_d.font.color.rgb = LIGHT_GREY
     r_d.font.name = "Segoe UI"
     
-    # Pill
     add_rect(s4, 10.6, y + 0.35, 1.8, 0.42, RGBColor(0x15, 0x18, 0x1C), border_color=CYAN, border_w=1)
     tx_pl = s4.shapes.add_textbox(Inches(10.6), Inches(y + 0.40), Inches(1.8), Inches(0.30))
     p_pl = tx_pl.text_frame.paragraphs[0]
@@ -606,97 +569,80 @@ add_footer(s7)
 
 
 # ==============================================================================
-# SLIDE 8: COMMERCIAL CAPABILITIES & CLIENT VALUE PROPOSITION (SPACED OUT)
+# SLIDE 8: COMMERCIAL CAPABILITIES & CLIENT VALUE (CLEAN INTEGRATED FLOW)
 # ==============================================================================
 s8 = prs.slides.add_slide(BLANK)
 add_rect(s8, 0, 0, 13.333, 7.5, IBM_DARK)
 add_header(s8, "Enterprise Extension & Client Value", "Why Partner With Us: Production-Grade AI Engineering")
 
 services = [
-    ("1. Agentic AI & Workflow Automation",
+    ("1. Agentic AI & Automation",
      [
-         ("Autonomous Execution", "Orchestrating agentic workflows using IBM Bob, LangGraph, & AutoGen."),
-         ("Multi-Turn Reasoning", "Multi-step contextual reasoning with state machines and dynamic memory."),
-         ("Human-in-the-Loop", "Guarded decision dispatch with built-in audit trails and human review.")
+         ("Autonomous Execution", "Orchestrating workflows using IBM Bob, LangGraph, & AutoGen."),
+         ("Multi-Turn Reasoning", "Multi-step contextual reasoning with state machines & memory."),
+         ("Human-in-the-Loop", "Guarded decision dispatch with built-in audit trails & review.")
      ],
-     GOLD,
-     "Core Specialization"),
+     GOLD),
     ("2. Vernacular & Multilingual AI",
      [
-         ("Indian Dialect Support", "Bridging regional language divides across Kannada, Hindi, Telugu, & Tamil."),
-         ("Dense Semantic Embeddings", "Domain-specific ontology alignment and hybrid lexical-semantic search."),
-         ("Sub-Second Latency", "Optimized vector search pipelines capable of running under resource constraints.")
+         ("Indian Dialect Support", "Bridging language divides across Kannada, Hindi, Telugu, & Tamil."),
+         ("Dense Semantic Embeddings", "Domain-specific ontology alignment and hybrid vector search."),
+         ("Sub-Second Latency", "Optimized vector search pipelines under resource constraints.")
      ],
-     CYAN,
-     "High Market Value"),
+     CYAN),
     ("3. Responsible AI & Governance",
      [
-         ("Zero-Trust Data Sanitization", "Real-time automated PII anonymization for Aadhaar IDs, phones, & emails."),
-         ("Explainable AI (XAI)", "Feature attribution scoring that explains every recommendation transparently."),
-         ("Audit Compliance", "Production systems engineered to meet international safety and privacy standards.")
+         ("Zero-Trust Sanitization", "Real-time automated PII masking for Aadhaar IDs, phones, & emails."),
+         ("Explainable AI (XAI)", "Feature attribution scoring explaining recommendations transparently."),
+         ("Audit Compliance", "Production systems engineered to meet international safety mandates.")
      ],
-     GOLD,
-     "Enterprise Ready"),
+     GOLD),
     ("4. Full-Stack Rapid Prototyping",
      [
-         ("Rapid Product Scaffolding", "End-to-end delivery from research papers to working cloud prototypes in days."),
-         ("Production Tooling", "FastAPI microservices, Streamlit reactive dashboards, and Docker deployment."),
+         ("Rapid Product Delivery", "End-to-end delivery from research papers to working cloud apps in days."),
+         ("Production Tooling", "FastAPI microservices, Streamlit reactive dashboards, & Docker."),
          ("Rigorous Automated QA", "Regression test coverage guaranteeing zero-bug client handoffs.")
      ],
-     CYAN,
-     "Full-Lifecycle")
+     CYAN)
 ]
 
-card_w_4 = 2.80
-for i, (s_title, s_points, s_col, s_pill) in enumerate(services):
-    x = 0.8 + (i * 3.0)
-    add_rect(s8, x, card_top, card_w_4, card_height, CARD_BG, border_color=CARD_BORDER)
-    add_rect(s8, x, card_top, card_w_4, 0.10, s_col)
+card_w_4 = Inches(2.80)
+for i, (s_title, s_points, s_col) in enumerate(services):
+    x = Inches(0.8 + (i * 3.0))
+    add_rect(s8, 0.8 + (i * 3.0), 1.70, 2.80, 5.05, CARD_BG, border_color=CARD_BORDER)
+    add_rect(s8, 0.8 + (i * 3.0), 1.70, 2.80, 0.10, s_col)
+    
+    tx_box = s8.shapes.add_textbox(x + Inches(0.20), card_top + Inches(0.20), card_w_4 - Inches(0.40), card_h - Inches(0.40))
+    tx_box.text_frame.word_wrap = True
+    tf = tx_box.text_frame
     
     # Title
-    tx_t = s8.shapes.add_textbox(Inches(x + 0.20), Inches(card_top + 0.22), Inches(card_w_4 - 0.40), Inches(0.70))
-    tx_t.text_frame.word_wrap = True
-    p_t = tx_t.text_frame.paragraphs[0]
-    r_t = p_t.add_run()
+    p_title = tf.paragraphs[0]
+    p_title.space_after = Pt(14)
+    r_t = p_title.add_run()
     r_t.text = s_title
-    r_t.font.size = Pt(14)
+    r_t.font.size = Pt(14.5)
     r_t.font.bold = True
     r_t.font.color.rgb = WHITE
     r_t.font.name = "Segoe UI"
     
-    # Body points
-    tx_b = s8.shapes.add_textbox(Inches(x + 0.20), Inches(card_top + 0.95), Inches(card_w_4 - 0.40), Inches(3.30))
-    tx_b.text_frame.word_wrap = True
-    tf_b = tx_b.text_frame
-    for p_idx, (p_h, p_d) in enumerate(s_points):
-        p_obj = tf_b.paragraphs[0] if p_idx == 0 else tf_b.add_paragraph()
-        p_obj.line_spacing = 1.30
-        p_obj.space_after = Pt(12)
+    for p_h, p_d in s_points:
+        p_item = tf.add_paragraph()
+        p_item.line_spacing = 1.25
+        p_item.space_after = Pt(12)
         
-        r_h = p_obj.add_run()
+        r_h = p_item.add_run()
         r_h.text = f"• {p_h}:\n"
         r_h.font.size = Pt(11)
         r_h.font.bold = True
         r_h.font.color.rgb = s_col
         r_h.font.name = "Segoe UI"
         
-        r_d = p_obj.add_run()
+        r_d = p_item.add_run()
         r_d.text = p_d
         r_d.font.size = Pt(10.5)
         r_d.font.color.rgb = LIGHT_GREY
         r_d.font.name = "Segoe UI"
-        
-    # Bottom pill
-    add_rect(s8, x + 0.20, card_top + 4.35, card_w_4 - 0.40, 0.45, RGBColor(0x15, 0x18, 0x1C), border_color=s_col, border_w=1)
-    tx_pill = s8.shapes.add_textbox(Inches(x + 0.20), Inches(card_top + 4.40), Inches(card_w_4 - 0.40), Inches(0.35))
-    p_pill = tx_pill.text_frame.paragraphs[0]
-    p_pill.alignment = PP_ALIGN.CENTER
-    r_pill = p_pill.add_run()
-    r_pill.text = s_pill
-    r_pill.font.size = Pt(9.5)
-    r_pill.font.bold = True
-    r_pill.font.color.rgb = s_col
-    r_pill.font.name = "Segoe UI"
 
 add_footer(s8)
 
@@ -736,7 +682,6 @@ r_cs.font.name = "Segoe UI"
 
 add_rect(s9, 0.8, 2.85, 11.8, 0.02, CARD_BORDER)
 
-# Contact Box
 add_rect(s9, 0.8, 3.25, 11.8, 3.45, CARD_BG, border_color=IBM_BLUE, border_w=1.5)
 
 tx_ct = s9.shapes.add_textbox(Inches(1.2), Inches(3.50), Inches(10.5), Inches(3.0))
@@ -800,4 +745,4 @@ add_footer(s9)
 
 out_path = r"D:\Projects & Internships\bengaluru-opporbob-ai\OpportunityBob_IBM_Bobathon_Presentation.pptx"
 prs.save(out_path)
-print(f"Professional presentation updated with full vertical coverage: {out_path}")
+print(f"Professional presentation updated cleanly: {out_path}")
