@@ -1,7 +1,7 @@
 # OpportunityBob 🏙️
 ## Multilingual AI Engine for Blue-Collar Employment, Skill Pathways & Community Food Redistribution
 
-[![Live Demo](https://img.shields.io/badge/Live%20App-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://bengaluru-opporbob-ai.streamlit.app)
+[![Live Demo](https://img.shields.io/badge/Live%20App-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-SatyaRamDinkar%2Fbengaluru--opporbob--ai-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SatyaRamDinkar/bengaluru-opporbob-ai)
 [![Challenge](https://img.shields.io/badge/IBM%20Bobathon-Build%20for%20Bengaluru-0543CE?style=for-the-badge&logo=ibm&logoColor=white)](https://github.com/SatyaRamDinkar/bengaluru-opporbob-ai)
 [![Theme](https://img.shields.io/badge/Theme%202-More%20Opportunity%20Greater%20Together-FFC000?style=for-the-badge&labelColor=161616)](https://github.com/SatyaRamDinkar/bengaluru-opporbob-ai)
@@ -16,7 +16,7 @@
 ## 🌐 Live Application Link
 
 > **🔗 Access the Live Prototype on Streamlit Cloud:**  
-> ### **[https://bengaluru-opporbob-ai.streamlit.app](https://bengaluru-opporbob-ai.streamlit.app)**
+> ### **[https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/](https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/)**
 
 The deployed live application provides:
 - **Multilingual Query Ingestion:** Instant semantic search in **English**, **Kannada (ಕನ್ನಡ)**, and **Hindi (हिंदी)**.
@@ -69,7 +69,7 @@ Bengaluru's economic landscape is characterized by a stark disparity: while high
                                                        |
                                                        v
 +-------------------------------------------------------------------------------------------------------------+
-|                    UNIFIED STREAMLIT PLATFORM (Live at bengaluru-opporbob-ai.streamlit.app)                 |
+|                    UNIFIED STREAMLIT PLATFORM (Live at bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app)                 |
 +-------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -174,7 +174,7 @@ python run.py
 streamlit run streamlit_app.py
 ```
 
-Open your browser at **`http://localhost:8501`** (or visit the cloud URL at [https://bengaluru-opporbob-ai.streamlit.app](https://bengaluru-opporbob-ai.streamlit.app)).
+Open your browser at **`http://localhost:8501`** (or visit the cloud URL at [https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/](https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/)).
 
 ---
 
@@ -224,4 +224,4 @@ bengaluru-opporbob-ai/
 * **Challenge:** IBM Bobathon: Build for Bengaluru (2026)
 * **Theme:** Theme 2 — *More Opportunity Greater Together*
 * **Core Technology:** Built with IBM Bob
-* **Live Application:** [https://bengaluru-opporbob-ai.streamlit.app](https://bengaluru-opporbob-ai.streamlit.app)
+* **Live Application:** [https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/](https://bengaluru-opporbob-ai-ud8igywajubnqmsmxn476f.streamlit.app/)
